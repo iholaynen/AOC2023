@@ -9,7 +9,7 @@ namespace AOC2023.Day1Trebuchet
 {
     internal class Day1Trebuchet : AbstractPuzzle
     {
-        public enum Day1Type { Puzzle1, Puzzle2 }
+
         private string m_pattern;
         private static readonly Dictionary<string, int> m_digits = new Dictionary<string, int>
         {
@@ -35,13 +35,13 @@ namespace AOC2023.Day1Trebuchet
             { "zero", 0 }
         };
 
-        public Day1Trebuchet(Day1Trebuchet.Day1Type day1Type) { 
+        public Day1Trebuchet(AbstractPuzzle.PuzzleType day1Type) { 
             switch (day1Type)
             {
-                case Day1Type.Puzzle1:
+                case PuzzleType.Puzzle1:
                     m_pattern = "[0-9]";
                     break;
-                case Day1Type.Puzzle2:
+                case PuzzleType.Puzzle2:
                     m_pattern = "([0-9]|one|two|three|four|five|six|seven|eight|nine|zero)";
                     break;
 

@@ -10,6 +10,7 @@ namespace AOC2023
 {
     internal abstract class AbstractPuzzle
     {
+        public enum PuzzleType { Puzzle1, Puzzle2 }
         public abstract string Solve();
         internal static IEnumerable<string> ReadLines(string path)
         {

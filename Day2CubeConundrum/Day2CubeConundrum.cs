@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static AOC2023.AbstractPuzzle;
 
 namespace AOC2023.Day2CubeConundrum
 {
@@ -12,6 +13,11 @@ namespace AOC2023.Day2CubeConundrum
         //Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
         private static string _patternLine = "Game\\s(?<game>\\d+):\\s(?<tuples>.*)";
         private static string _patternTuple = @"(\d+) (red|blue|green)";
+        private  AbstractPuzzle.PuzzleType _puzzleType;
+        public Day2CubeConundrum(AbstractPuzzle.PuzzleType puzzleType)
+        {
+            this._puzzleType = puzzleType;
+        }
         public override string Solve()
         {
             int total = 0;
@@ -50,8 +56,11 @@ namespace AOC2023.Day2CubeConundrum
                     }
                 }
             }
+            if (this._puzzleType == PuzzleType.Puzzle1)
+                return (12 >= maxRed && 13 >= maxGreen && 14 >= maxBlue) ? gameNum : 0;
+            else
+                return maxRed*maxGreen*maxBlue;
 
-            return (12>=maxRed && 13>=maxGreen && 14>=maxBlue)?gameNum:0;
         }
     }
 }
