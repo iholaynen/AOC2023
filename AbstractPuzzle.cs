@@ -28,5 +28,15 @@ namespace AOC2023
             string directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             return  Path.Combine(directory, "data.txt");
         }
+        public static TValue GetOrCreate<TKey, TValue>(IDictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue)
+        {
+            if (!dictionary.TryGetValue(key, out TValue value))
+            {
+                value = defaultValue;
+                dictionary[key] = value;
+            }
+
+            return value;
+        }
     }
 }
